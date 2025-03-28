@@ -212,7 +212,7 @@ const buildPostsQueryParams = (page: number, itemsPerPage: number, searchTerm: s
   const params = new URLSearchParams()
   params.set("per_page", itemsPerPage.toString())
   params.set("page", page.toString())
-  params.set("categories", "1")
+  params.set("categories_slug", "elanlar")
   params.set("_embed", "true")
   params.set("status", "publish")
 

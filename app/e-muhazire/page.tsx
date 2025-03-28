@@ -66,17 +66,17 @@ export default function EMuhazirePage() {
           if (categoryFilters.length > 1) {
             // For posts that must have ALL specified categories, we need to use a custom approach
             // First, get posts with the first category
-            endpoint += `&categories=${categoryFilters[0]}`;
+            endpoint += `&categories_slug=${categoryFilters[0]}`;
             
             // Then we'll filter the results client-side to ensure they have all categories
           } else {
             // When only one filter is selected, simple filtering works
-            endpoint += `&categories=${categoryFilters[0]}`;
+            endpoint += `&categories_slug=${categoryFilters[0]}`;
           }
         }
 
-        // Exclude posts with category IDs 1, 3, and 4
-        endpoint += '&categories_exclude=1,3,4'
+        // Exclude posts with category slugs
+        endpoint += '&categories_exclude_slug=elanlar,xeberler,tedbirler'
         
         const response = await getPosts(endpoint)
         let filteredPosts = response.posts as LecturePost[];

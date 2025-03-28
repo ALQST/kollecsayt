@@ -12,8 +12,8 @@ import { getPosts, type WordPressPost } from "../../lib/wordpress"
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const { data, error } = useSWR<{ posts: WordPressPost[]; total: number }>(
-    `/wp/v2/posts?categories=1&_embed=true&per_page=5`,
-    () => getPosts("/wp/v2/posts?categories=1&_embed=true&per_page=5")
+    `/wp/v2/posts?categories_slug=xeberler&_embed=true&per_page=5`,
+    () => getPosts("/wp/v2/posts?categories_slug=xeberler&_embed=true&per_page=5")
   )
   const posts = data?.posts
   const [isMobile, setIsMobile] = useState(false)

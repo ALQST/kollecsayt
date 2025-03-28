@@ -55,7 +55,10 @@ export async function getPosts(endpoint: string): Promise<WordPressResponse> {
     }
 
     // Add wp/v2/posts if not already in the endpoint and it's not a media request
-    if (!endpoint.includes("wp/v2/posts") && !endpoint.includes("wp/v2/media")) {
+    // and it's not a category slug query
+    if (!endpoint.includes("wp/v2/posts") && 
+        !endpoint.includes("wp/v2/media") && 
+        !endpoint.includes("categories_slug")) {
       endpoint = "/wp/v2/posts" + endpoint
     }
 
@@ -168,7 +171,7 @@ export async function getCategories() {
  */
 export async function getEvents(): Promise<WordPressPost[]> {
   try {
-    const { posts } = await getPosts("/wp/v2/posts?categories=3&_embed=true&per_page=5")
+    const { posts } = await getPosts("/wp/v2/posts?categories_slug=tedbirler&_embed=true&per_page=5")
     return posts
   } catch (error) {
     console.error("Error fetching events:", error)
@@ -182,7 +185,7 @@ export async function getEvents(): Promise<WordPressPost[]> {
  */
 export async function getAnnouncements(): Promise<WordPressPost[]> {
   try {
-    const { posts } = await getPosts("/wp/v2/posts?categories=4&_embed=true&per_page=5")
+    const { posts } = await getPosts("/wp/v2/posts?categories_slug=elanlar&_embed=true&per_page=5&status=publish")
     return posts
   } catch (error) {
     console.error("Error fetching announcements:", error)

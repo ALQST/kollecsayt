@@ -4,15 +4,15 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'primary-production-49cbba.up.railway.app',
-        port: '',
+        protocol: 'http',
+        hostname: process.env.NEXT_PUBLIC_WORDPRESS_HOSTNAME || 'localhost',
+        port: process.env.NEXT_PUBLIC_WORDPRESS_PORT || '8000',
         pathname: '/wp-content/uploads/**',
       },
     ],
   },
   env: {
-    NEXT_PUBLIC_WORDPRESS_API_URL: 'https://primary-production-49cbba.up.railway.app',
+    NEXT_PUBLIC_WORDPRESS_API_URL: process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:8000',
   },
   basePath: '',
   assetPrefix: '',
