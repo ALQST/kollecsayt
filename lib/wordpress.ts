@@ -65,8 +65,11 @@ export async function getPosts(endpoint: string): Promise<WordPressResponse> {
     const response = await fetch(apiUrl, {
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+        'Origin': 'https://sosial-iqtisadi-kollec.onrender.com'
+      },
+      mode: 'cors',
+      credentials: 'same-origin'
     })
 
     // Check content type to ensure we're getting JSON
