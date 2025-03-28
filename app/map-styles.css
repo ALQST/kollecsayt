@@ -1,0 +1,7 @@
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+.leaflet-attribution-flag {
+  display: none !important;
+}
