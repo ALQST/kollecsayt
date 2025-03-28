@@ -40,7 +40,7 @@ export interface WordPressResponse {
 }
 
 // WordPress API base URL - replace with your WordPress site URL
-const API_URL = process.env.WORDPRESS_API_URL ? `${process.env.WORDPRESS_API_URL}/wp-json` : "http://localhost:8000/wp-json"
+const API_URL = `https://primary-production-49cbba.up.railway.app/wp-json`
 
 /**
  * Fetch posts from WordPress API
