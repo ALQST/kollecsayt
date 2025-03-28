@@ -3,6 +3,8 @@ services:
     name: wordpress
     env: docker
     dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /
     envVars:
       - key: WORDPRESS_DB_HOST
         sync: false
@@ -11,4 +13,10 @@ services:
       - key: WORDPRESS_DB_PASSWORD
         sync: false
       - key: WORDPRESS_DB_NAME
-        sync: false 
+        sync: false
+      - key: WORDPRESS_TABLE_PREFIX
+        value: "wp_"
+      - key: WORDPRESS_DEBUG
+        value: "1"
+      - key: WORDPRESS_CONFIG_EXTRA
+        value: "define('WP_HOME', 'https://' . $_SERVER['HTTP_HOST']); define('WP_SITEURL', 'https://' . $_SERVER['HTTP_HOST']);" 
